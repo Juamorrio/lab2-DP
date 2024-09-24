@@ -1,8 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { Navbar, NavbarBrand, NavLink, NavItem, Nav, NavbarText, NavbarToggler, Collapse } from 'reactstrap';
-import { Link } from 'react-router-dom';
-import tokenService from './services/token.service';
 import jwt_decode from "jwt-decode";
+import React, { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Collapse, Nav, Navbar, NavbarBrand, NavbarText, NavbarToggler, NavItem, NavLink } from 'reactstrap';
+import tokenService from './services/token.service';
 
 function AppNavbar() {
     const [roles, setRoles] = useState([]);
@@ -32,10 +32,24 @@ function AppNavbar() {
                     <NavItem>
                         <NavLink style={{ color: "white" }} tag={Link} to="/users">Users</NavLink>
                     </NavItem>
+                    <NavItem>
+                        <NavLink style={{ color: "white" }} tag={Link} to="/developers">Developers</NavLink>
+                    </NavItem>
+
                 </>
             )
-        }        
+        }
+        if (role === "PLAYER") {
+            ownerLinks = (
+           <>
+           <NavItem>
+           <NavLink style={{ color: "white" }} tag={Link} to="/achievements">Achievements</NavLink>
+           </NavItem>
+           </>
+           )
+           }        
     })
+       
 
     if (!jwt) {
         publicLinks = (

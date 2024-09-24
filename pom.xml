@@ -96,6 +96,16 @@
 				<role>developer</role>
 			</roles>
 		</developer>
+		<developer>
+			<id>JMR</id>
+			<name>J.M.Rios</name>
+			<email>Jmorenorios5@gmail.com</email>
+			<url>https://departamento.us.es/lsi/</url>
+			<roles>
+				<role>developer</role>
+				<role>alumno</role>
+			</roles>
+		</developer>
 	</developers>
 
 	<dependencies>

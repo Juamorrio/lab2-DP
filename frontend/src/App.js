@@ -1,18 +1,20 @@
-import React from "react";
-import { Route, Routes } from "react-router-dom";
 import jwt_decode from "jwt-decode";
+import React from "react";
 import { ErrorBoundary } from "react-error-boundary";
+import { Route, Routes } from "react-router-dom";
+import AchievementList from "./achievements/achievementList";
+import UserEditAdmin from "./admin/users/UserEditAdmin";
+import UserListAdmin from "./admin/users/UserListAdmin";
 import AppNavbar from "./AppNavbar";
-import Home from "./home";
-import PrivateRoute from "./privateRoute";
-import Register from "./auth/register";
 import Login from "./auth/login";
 import Logout from "./auth/logout";
+import Register from "./auth/register";
+import DeveloperList from "./developers";
+import Home from "./home";
+import PrivateRoute from "./privateRoute";
 import PlanList from "./public/plan";
-import tokenService from "./services/token.service";
-import UserListAdmin from "./admin/users/UserListAdmin";
-import UserEditAdmin from "./admin/users/UserEditAdmin";
 import SwaggerDocs from "./public/swagger";
+import tokenService from "./services/token.service";
 
 function ErrorFallback({ error, resetErrorBoundary }) {
   return (
@@ -46,13 +48,16 @@ function App() {
       adminRoutes = (
         <>
           <Route path="/users" exact={true} element={<PrivateRoute><UserListAdmin /></PrivateRoute>} />
-          <Route path="/users/:username" exact={true} element={<PrivateRoute><UserEditAdmin /></PrivateRoute>} />          
+          <Route path="/users/:username" exact={true} element={<PrivateRoute><UserEditAdmin /></PrivateRoute>} /> 
+          <Route path="/developers" element={<DeveloperList />} />         
         </>)
     }
     if (role === "PLAYER") {
       ownerRoutes = (
         <>
-          
+          <Route path="/achievements/" exact={true} element={<PrivateRoute><AchievementList
+          /></PrivateRoute>} />
+
         </>)
     }    
   })
